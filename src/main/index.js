@@ -35,6 +35,46 @@ function createWindow() {
     mainWindow.on('closed', () => {
         mainWindow = null
     })
+
+    const iconPath = path.join(__static, '/imgs/icon.png')
+    const trayUrl = nativeImage.createFromPath(iconPath)
+    appIcon = new Tray(trayUrl);
+    appIcon.on('click', function() {
+        mainWindow.show()
+    })
+    const contextMenu = Menu.buildFromTemplate([{
+            label: '显示',
+            click: function() {
+                mainWindow.show()
+            }
+        },
+        {
+            label: '退出',
+            click: function() {
+                app.quit()
+            }
+        }
+
+    ])
+    appIcon.setToolTip('fn')
+    appIcon.setContextMenu(contextMenu)
+
+    ipcMain.on('asynchronous-show', (event, arg) => {
+        if (arg === 'show') {
+            mainWindow.minimize()
+        } else if (arg === 'expand') {
+            console.log(mainWindow.isMaximized())
+            if (mainWindow.isMaximized()) {
+                mainWindow.unmaximize()
+            } else {
+                mainWindow.maximize()
+            }
+
+        } else {
+            mainWindow.hide()
+        }
+
+    })
 }
 
 app.on('ready', createWindow)
