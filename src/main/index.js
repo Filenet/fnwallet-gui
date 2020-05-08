@@ -36,33 +36,10 @@ function createWindow() {
         mainWindow = null
     })
 
-    const iconPath = path.join(__static, '/imgs/icon.png')
-    const trayUrl = nativeImage.createFromPath(iconPath)
-    appIcon = new Tray(trayUrl);
-    appIcon.on('click', function() {
-        mainWindow.show()
-    })
-    const contextMenu = Menu.buildFromTemplate([{
-            label: '显示',
-            click: function() {
-                mainWindow.show()
-            }
-        },
-        {
-            label: '退出',
-            click: function() {
-                app.quit()
-            }
-        }
-
-    ])
-    appIcon.setToolTip('fn')
-    appIcon.setContextMenu(contextMenu)
-
     ipcMain.on('asynchronous-show', (event, arg) => {
         if (arg === 'show') {
             mainWindow.minimize()
-        } else if (arg === 'expand') {
+        } else if (arg === 'max') {
             console.log(mainWindow.isMaximized())
             if (mainWindow.isMaximized()) {
                 mainWindow.unmaximize()
@@ -75,6 +52,31 @@ function createWindow() {
         }
 
     })
+
+    const iconPath = path.join(__static, '/imgs/icon.png')
+    const trayUrl = nativeImage.createFromPath(iconPath)
+    appIcon = new Tray(trayUrl);
+
+    appIcon.on('click', function() {
+        mainWindow.show()
+    })
+
+    const contextMenu = Menu.buildFromTemplate([{
+            label: 'show',
+            click: function() {
+                mainWindow.show()
+            }
+        },
+        {
+            label: 'quit',
+            click: function() {
+                app.quit()
+            }
+        }
+
+    ])
+    appIcon.setToolTip('我的软件')
+    appIcon.setContextMenu(contextMenu)
 }
 
 app.on('ready', createWindow)
