@@ -1,6 +1,6 @@
 <template>
   <header>
-        <div class="header">
+      <div class="header">
           <span @click="mizeShow('show')">
               <img src="../../../static/imgs/yi.png" alt="">
           </span>
@@ -10,6 +10,9 @@
           <span @click="mizeShow('quit')">
               <img src="../../../static/imgs/shanchushaixuanxiang.png" alt="">                
           </span>
+      </div>
+      <div class="content">
+          
       </div>
   </header>
 </template>
@@ -36,8 +39,12 @@ export default {
         padding: 0 20px;
         img{
             height: 100%;
-            -webkit-app-region: no-drag;
-            
+            -webkit-app-region: no-drag; 
         }
+    }
+    .content{
+      width: 100%;
+      height: 300px;
+      background: red;
     }
 </style>
