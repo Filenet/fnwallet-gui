@@ -1,0 +1,11 @@
+$bgColor: #E4E4E4;
+$bgColorFFF:#fff;
+$bgBtnColor:#1890FF; //button 背景颜色
+$tdHeight: 56px; //表格td 的高度
+@mixin wrapper() {
+    width: 100%;
+    min-height: 100%;
+    border-radius: 4px;
+    // padding-bottom: 22px;
+    background: $bgColorFFF;
+}

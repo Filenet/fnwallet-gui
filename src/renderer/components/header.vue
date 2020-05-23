@@ -11,9 +11,6 @@
               <img src="../../../static/imgs/shanchushaixuanxiang.png" alt="">                
           </span>
       </div>
-      <div class="content">
-          
-      </div>
   </header>
 </template>
 <script>
