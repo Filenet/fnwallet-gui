@@ -75,7 +75,7 @@ function createWindow() {
         }
 
     ])
-    appIcon.setToolTip('我的软件')
+    appIcon.setToolTip('filenet')
     appIcon.setContextMenu(contextMenu)
 }
 
