@@ -1,0 +1,4 @@
+owner: Filenet
+repo: fnwallet-gui
+provider: github
+updaterCacheDirName: filenet-updater
