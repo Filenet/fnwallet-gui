@@ -51,6 +51,27 @@
                         <span class="counttitle">{{$t('SurplusCoin')}}</span>
                     </div>
                 </div>
+                <div>
+                    <div class="history">
+                        <div id="history" style="width: 587px;height:345px;"></div>
+                    </div>
+                    <div class="map">
+                        <h4 class="maptitle">{{$t('GlobalNodeDistribution')}}</h4>
+                        <div id="main" style="width: 587px;height:294px;"></div>
+                    </div>
+                </div>
+                <div class="tabtable-contain">
+                    <ul class="tabtable">
+                        <li :class="showTable==='packagingNodeTable'?'actived':''"
+                            @click="toTable('packagingNodeTable')">
+                            {{$t('packingnode')}}</li>
+                        <li :class="showTable==='newBlockTable'?'actived':''" @click="toTable('newBlockTable')">
+                            {{$t('latestblocks')}}</li>
+                        <li :class="showTable==='transferTable'?'actived':''" @click="toTable('transferTable')">
+                            {{$t('transaction')}}</li>
+                    </ul>
+                    <span > {{nextPackingTime}}</span>
+                </div>
                 <router-view>
                     <!-- table -->
                 </router-view>
